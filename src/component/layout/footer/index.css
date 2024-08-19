@@ -18,10 +18,7 @@
 #display-footer {
     display: none;
 }
-.margin-f{
-    margin: 0px auto;
-    text-align: center;
-}
+
 #svg1{   
     background-image: url(../../../img/svg/mastercard-svgrepo-com.svg); 
 }

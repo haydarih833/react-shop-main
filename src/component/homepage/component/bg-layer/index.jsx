@@ -16,7 +16,7 @@ export default function BG_Layer() {
                 </ol>
                 <div className="carousel-inner ">
                     <div className='text'>
-                        <div id='title_text_bglayer'>Best Prices</div>
+                        <div id='title_text_bglayer'  className='w-25'>Best Prices</div>
                         <div id='text-bglayer'> <h3>Incredible Prices on All Your Favorite Items</h3></div>
                         <div id='text-bglayer'> <p className='fs-5'>Get more for less on selected brands</p></div>
 

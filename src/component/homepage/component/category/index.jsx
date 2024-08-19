@@ -7,7 +7,7 @@ const handleclick =(categoryId)=>{
   navigate(`products/${categoryId}`)
 }
   return (
-    <div className='p-4 margin-f'>
+    <div className='p-4 text-center mx-auto'>
       {props.id < 6 &&
         <>
           <div className='box-category' onClick={()=>handleclick(props.id)}><img src={props.image} /></div>

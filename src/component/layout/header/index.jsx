@@ -10,21 +10,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Browse from '../../browse';
 export default function Header({ category, addCart, name, setHasActiveLogin }) {
     const navigate = useNavigate()
-    const [state, setState] = useState({
-        showCart: false,
-    });
-    // local Storage
-    // localStorage.setItem('myArrayKey', JSON.stringify(addCart));
-    // const storedArray = JSON.parse(localStorage.getItem('myArrayKey'));
-    // console.log(storedArray);
-    const handleShowCart = () => {
-        if (addCart.length >= 1) {
-            setState((prevState) => ({
-                ...prevState,
-                showCart: !prevState.showCart,
-            }));
-        }
-    };
     const [search, setSearch] = useState({
         searchArray: [],
         isSearch: false
@@ -94,7 +79,13 @@ export default function Header({ category, addCart, name, setHasActiveLogin }) {
                         <div className='container-fuild position-absolute  bg-dark w-25 overflow-scroll' id='searchrender'>
                             {
                                 search.searchArray.map(item => {
-                                    return <div onClick={() => { navigate(`product/${item.id}`) }} class="card mb-3 mt-2 mx-auto z-3" id='showCart'>
+                                    return <div onClick={() => {
+                                        navigate(`product/${item.id}`); setSearch((prevState) => ({
+                                            ...prevState,
+                                            isSearch: false
+                                        }));
+                                        inputSearchRef.current.value=''
+                                    }} class="card mb-3 mt-2 mx-auto z-3" id='showCart'>
                                         <div class="row g-0">
                                             <div class="col-md-4">
                                                 <img src={item.images[0]} class="img-fluid rounded-start mx-2 mt-2  " />
@@ -119,35 +110,13 @@ export default function Header({ category, addCart, name, setHasActiveLogin }) {
                         <div className='d-md-flex align-items-center justify-content-between'>
                             <div className='d-flex justify-content-end p-2'>
                                 <div><FavoriteBorderIcon sx={{ fontSize: 30, marginLeft: '30px' }} /></div>
-                                <div className='mx-2' onClick={handleShowCart}>
-                                    <Badge badgeContent={addCart.length} color="success">
-                                        <ShoppingCartIcon color="action" />
-                                    </Badge>
-                                    {/* show save buy */}
-                                    {
-                                        state.showCart &&
-                                        <div className=' width-shop position-absolute overflow-scroll'>
-                                            {
-                                                addCart.map(item => {
-                                                    return <div class="card mb-2 mt-2 mx-auto" id='showCart' onClick={() => { navigate(`product/${item.id}`) }}>
-                                                        <div class="row g-0">
-                                                            <div class="col-md-4">
-                                                                <img src={item.images[0]} className="img-fluid rounded-start mx-2 mt-2 pb-2  " />
-                                                            </div>
-                                                            <div class="col-md-8">
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title">{item.title}</h5>
-                                                                    <p class="card-text">${item.price}</p>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                })
-                                            }
-                                        </div>
-                                    }
-                                </div>
+                                <Link to={'/mycart'} >
+                                    <div className='mx-2'>
+                                        <Badge badgeContent={addCart.total} color="success">
+                                            <ShoppingCartIcon color="action" />
+                                        </Badge>
+                                    </div>
+                                </Link>
                             </div>
                             <div className='p-3 account-box d-flex align-items-center fw-bold' onClick={() => { navigate('/login'); setHasActiveLogin(false) }}>
                                 {!name ?

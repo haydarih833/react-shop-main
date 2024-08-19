@@ -20,8 +20,8 @@ export default function Homepage({ category }) {
       <BG_Layer />
       <BG_Layer_1/>
       <Box />
-      <div className='container-fluid' >
-        <div className='text-center fs-2 fw-bold pt-4' > <p>Best Sellers</p></div>
+      <div className='container-fluid text-center' >
+        <div className='fs-2 fw-bold pt-4' > <p>Best Sellers</p></div>
         <div className='container-fluid overflow-scroll  g-5'>
           <div className='d-flex justify-content-between height-media'>
             {
@@ -33,7 +33,7 @@ export default function Homepage({ category }) {
             }
           </div>
         </div>
-        <div className='w-100  mt-5 ' id='button-media-bg'><button onClick={() => handleAddressApl(1)}>View All</button></div>
+        <div className='w-100   ' id='button-media-bg'><button onClick={() => handleAddressApl(1)}>View All</button></div>
       </div>
       <BG_Layer_3
         title={'Save up to'}
@@ -52,8 +52,8 @@ export default function Homepage({ category }) {
           })
         }
       </div>
-      <div className='container-fluid' >
-        <div className='text-center fs-2 fw-bold pt-4' > <p>Best Sellers</p></div>
+      <div className='container-fluid text-center' >
+        <div className='fs-2 fw-bold pt-4' > <p>Best Sellers</p></div>
         <div className='container-fluid overflow-scroll  g-5'>
           <div className='d-flex justify-content-between height-media'>
             {

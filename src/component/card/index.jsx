@@ -5,16 +5,17 @@ import { Rating } from '@mui/material';
 
 export default function Card(props) {
   const navigate = useNavigate()
-  const handleclick = (productId) => [
+  const handleclick = (productId) => {
     navigate(`/product/${productId}`)
-  ]
-  const [isHover, setIsHover] = useState(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  const [isHover, setIsHover] = useState(true)
   const handlehover = (props) => {
     setIsHover(props)
   }
   const randomNumber = useRef( Math.floor(Math.random() * 5) + 1);
   return (
-    <div className="card col-10 col-lg-3 p-2 g-3" id='time' onMouseEnter={() => handlehover(false)} onMouseLeave={() => handlehover(true)} onClick={() => handleclick(props.id)}>
+    <div className="card col-10 col-sm-5 m-3 col-lg-3 p-2 g-3" id='time' onMouseEnter={() => handlehover(false)} onMouseLeave={() => handlehover(true)} onClick={() => handleclick(props.id)}>
       {
         isHover ?
           <img className="card-img-top" src={props.images[0]} />

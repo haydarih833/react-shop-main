@@ -6,7 +6,7 @@ export default function Browse(props) {
         <>
             {
                 props.id <= 6 &&
-                <Link  to={`products/${props.id}`}><a className="nav-link text-dark">{props.name}</a></Link>
+                <Link  to={`/products/${props.id}`}><a className="nav-link text-dark">{props.name}</a></Link>
             }
 
         </>
